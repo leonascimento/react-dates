@@ -19,6 +19,10 @@ export default {
   startDate: momentPropTypes.momentObj,
   endDate: momentPropTypes.momentObj,
   onDatesChange: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 
   focusedInput: FocusedInputShape,
   onFocusChange: PropTypes.func.isRequired,

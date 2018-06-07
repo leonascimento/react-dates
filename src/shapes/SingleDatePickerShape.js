@@ -61,6 +61,10 @@ export default {
   isRTL: PropTypes.bool,
   verticalHeight: nonNegativeInteger,
   transitionDuration: nonNegativeInteger,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 
   // navigation related props
   navPrev: PropTypes.node,

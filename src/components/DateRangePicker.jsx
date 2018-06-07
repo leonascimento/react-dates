@@ -47,6 +47,7 @@ const defaultProps = {
   startDate: null,
   endDate: null,
   focusedInput: null,
+  children: null,
 
   // input related props
   startDatePlaceholderText: 'Start Date',
@@ -386,6 +387,7 @@ class DateRangePicker extends React.Component {
       small,
       disabled,
       theme: { reactDates },
+      children,
     } = this.props;
     const { dayPickerContainerStyles, isDayPickerFocused, showKeyboardShortcuts } = this.state;
 
@@ -466,6 +468,7 @@ class DateRangePicker extends React.Component {
           verticalHeight={verticalHeight}
           transitionDuration={transitionDuration}
           disabled={disabled}
+          child={children}
         />
 
         {withFullScreenPortal && (

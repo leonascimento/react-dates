@@ -68,6 +68,10 @@ const propTypes = forbidExtraProps({
   noBorder: PropTypes.bool,
   transitionDuration: nonNegativeInteger,
   verticalBorderSpacing: nonNegativeInteger,
+  child: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 
   // navigation props
   navPrev: PropTypes.node,
@@ -120,6 +124,7 @@ export const defaultProps = {
   noBorder: false,
   transitionDuration: undefined,
   verticalBorderSpacing: undefined,
+  child: null,
 
   // navigation props
   navPrev: null,
@@ -827,6 +832,7 @@ class DayPicker extends React.Component {
       noBorder,
       transitionDuration,
       verticalBorderSpacing,
+      child,
     } = this.props;
 
     const isHorizontal = this.isHorizontal();
@@ -986,6 +992,8 @@ class DayPicker extends React.Component {
                 />
                 {verticalScrollable && this.renderNavigation()}
               </div>
+
+              {child && child}
 
               {!isTouch && !hideKeyboardShortcutsPanel &&
                 <DayPickerKeyboardShortcuts

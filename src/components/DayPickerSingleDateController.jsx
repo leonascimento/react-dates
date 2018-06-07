@@ -58,6 +58,10 @@ const propTypes = forbidExtraProps({
   noBorder: PropTypes.bool,
   verticalBorderSpacing: nonNegativeInteger,
   transitionDuration: nonNegativeInteger,
+  child: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 
   navPrev: PropTypes.node,
   navNext: PropTypes.node,
@@ -111,6 +115,7 @@ const defaultProps = {
   noBorder: false,
   verticalBorderSpacing: undefined,
   transitionDuration: undefined,
+  child: null,
 
   navPrev: null,
   navNext: null,
@@ -619,6 +624,7 @@ export default class DayPickerSingleDateController extends React.Component {
       noBorder,
       transitionDuration,
       verticalBorderSpacing,
+      child,
     } = this.props;
 
     const { currentMonth, visibleDays } = this.state;
@@ -661,6 +667,7 @@ export default class DayPickerSingleDateController extends React.Component {
         noBorder={noBorder}
         transitionDuration={transitionDuration}
         verticalBorderSpacing={verticalBorderSpacing}
+        child={child}
       />
     );
   }
