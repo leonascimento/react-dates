@@ -45,6 +45,9 @@ const defaultProps = {
   // required props for a functional interactive SingleDatePicker
   date: null,
   focused: false,
+  hours: null,
+  minutes: null,
+  seconds: null,
 
   // input related props
   id: 'date',
@@ -265,8 +268,17 @@ class SingleDatePicker extends React.Component {
 
   getDateString(date) {
     const displayFormat = this.getDisplayFormat();
+    let formatted = date && date.format(displayFormat);
     if (date && displayFormat) {
-      return date && date.format(displayFormat);
+      if (this.props.hours && this.props.minutes) {
+        let dateWithHours = date;
+        dateWithHours.hours(this.props.hours);
+        dateWithHours.minutes(this.props.minutes);
+        dateWithHours.seconds(this.props.seconds);
+        dateWithHours = dateWithHours.format(displayFormat);
+        return dateWithHours;
+      }
+      return formatted;
     }
     return toLocalizedDateString(date);
   }
